@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, director } from 'cc';
 import { dataCenter } from './dataCenter';
 const { ccclass, property } = _decorator;
 
@@ -9,15 +9,21 @@ export class appRoot extends Component {
     public getInstance() {
         return this.instance;
     }   
-    public setInstance()
+    public getDataCenter() {
+        return this.dataCenter;
+    } 
+    public saveHighestScore(score)
     {
-        return this.instance;
-    }
+        this.dataCenter.setHighestScore(score);
+        console.log(this.dataCenter.getHighestScore());
+    }  
     start() {
+        director.addPersistRootNode(this.node);
         this.instance = this;
         this.dataCenter = new dataCenter;
     }
     update(deltaTime: number) {
     }
+
 }
 

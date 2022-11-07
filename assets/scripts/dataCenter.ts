@@ -3,12 +3,14 @@ const { ccclass, property } = _decorator;
 
 @ccclass('dataCenter')
 export class dataCenter extends Component {
-    private highestscore;
-    start() {
+    private highestscore = 0;
+    public setHighestScore(score) {
+        this.highestscore = score;
+    }
+    public getHighestScore() {
+        return this.highestscore;
     }
 
-    update(deltaTime: number) {
-        
-    }
+
 }
 
