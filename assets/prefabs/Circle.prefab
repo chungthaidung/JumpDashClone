@@ -217,7 +217,7 @@
     "scoreNode": null,
     "maxX": 198,
     "minX": -198,
-    "velocityX": 7,
+    "velocityX": 4,
     "velocityY": 0.4,
     "_id": ""
   },

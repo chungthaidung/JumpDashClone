@@ -20,6 +20,8 @@ export class PlayerControl extends Component {
     private velocityX;
     @property({ type: CCFloat })
     private velocityY;
+    @property({type:CCFloat})
+    private incVelocity;
     public setScoreManager(node)
     {
         this.scoreNode = node;
@@ -28,7 +30,6 @@ export class PlayerControl extends Component {
     {
         return this.scoreNode;
     }
-
     public setState(newstate){
         this.state = newstate;
     }
@@ -53,6 +54,7 @@ export class PlayerControl extends Component {
     }
 
     update(deltaTime: number) {
+        console.log(this.velocityY);
         this.stateUpdate(deltaTime);
         if (this.node.position.x > this.maxX) {
             this.node.position = new Vec3(this.maxX, this.node.position.y);
@@ -64,6 +66,9 @@ export class PlayerControl extends Component {
             if (this.scoreNode){
                 let scoremanager = this.scoreNode.getComponent(scoreManager);
                 scoremanager.setScore(scoremanager.getScore() + 1);
+                if (scoremanager.getScore()%20 == 0) {
+                    this.velocityY += this.incVelocity;
+                }
             }
         }
     }
